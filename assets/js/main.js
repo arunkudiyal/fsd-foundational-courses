@@ -239,3 +239,40 @@
   });
 
 })()
+
+/**
+   * Timer
+   */
+   var countDownDate = new Date("Dec 27, 2021 18:00:00").getTime();
+        
+   var x = setInterval(function() {
+ 
+     var now = new Date().getTime();
+     
+     var distance = countDownDate - now;
+     
+     var days = Math.floor(distance / (1000 * 60 * 60 * 24)) < 10 ? `0${Math.floor(distance / (1000 * 60 * 60 * 24))}` : `${Math.floor(distance / (1000 * 60 * 60 * 24))}`
+
+     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) < 10 ? `0${Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}` : `${Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))}`;
+
+     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)) < 10 ? `0${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}` : `${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}`;
+
+     var seconds = Math.floor((distance % (1000 * 60)) / 1000) < 10 ? `0${Math.floor((distance % (1000 * 60)) / 1000)}` : `${Math.floor((distance % (1000 * 60)) / 1000)}`;
+     
+     // document.getElementById("day").innerHTML = days+"<br /> <span style="font-size: 0.7em;">DAYS</span>"
+
+     if(distance > 10) {
+         document.getElementById("day").innerHTML = `<span style="font-size: 2em;">${days}</span> <br /> <span style="font-size: 0.7em; padding-top: 1.1em">DAYS</span>`
+         document.getElementById("hours").innerHTML = `<span style="font-size: 2em;">${hours}</span> <br /> <span style="font-size: 0.7em; padding-top: 1.1em">HOURS</span>`
+         document.getElementById("minutes").innerHTML = `<span style="font-size: 2em;">${minutes}</span> <br /> <span style="font-size: 0.7em; padding-top: 1">MINUTES</span>`
+         document.getElementById("seconds").innerHTML = `<span style="font-size: 2em;">${seconds}</span> <br /> <span style="font-size: 0.7em; padding-top: 1">SECONDS</span>`
+
+         if(distance < 10) {
+             document.getElementById("hours").innerHTML = `<span style="font-size: 2em;">${hours}</span> <br /> <span style="font-size: 0.7em; padding-top: 1.1em">HOURS</span>`
+         }
+     }
+
+     else if (distance < 0) {
+         clearInterval(x);
+     }
+ }, 1000);
